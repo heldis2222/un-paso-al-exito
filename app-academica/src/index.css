@@ -1,365 +1,59 @@
-/* ==========================================
-   ESTILO ELEGANTE / MINIMALISTA (TODOIST STYLE)
-   ========================================== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* ==============================================
+   ESTILOS GLOBALES Y REPARACIÓN PARA CELULAR
+   ============================================== */
 
-:root {
-  --bg-main: #FAFAFA;
-  --bg-sidebar: #FF0F5;
-  --bg-card: #FFFFFF;
-  --text-main: #202020;
-  --text-muted: #666666;
-  --primary: #E44232;
-  --primary-hover: #C53425;
-  --border-light: #ECECEC;
-  --border-active: #DCDCDC;
-  --shadow-subtle: 0 1px 3px rgba(0,0,0,0.05);
-  --shadow-dropdown: 0 8px 24px rgba(0,0,0,0.08);
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
+/* 1. RESET GLOBAL: Evita que las cajas y márgenes descuadren la pantalla */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: var(--font-family);
-  -webkit-font-smoothing: antialiased;
 }
 
-body {
-  background-color: var(--bg-main);
-  color: var(--text-main);
+html, body {
+  width: 100%;
   min-height: 100vh;
+  overflow-x: hidden; /* Elimina la barra de desplazamiento horizontal */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
 #root {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-/* LAYOUT PRINCIPAL (SIDEBAR + MAIN) */
-.app-container {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  background: var(--bg-main);
-}
-
-.sidebar {
-  width: 280px;
-  background: #F8F8F8;
-  border-right: 1px solid var(--border-light);
-  display: flex;
-  flex-direction: column;
-  padding: 1.25rem 1rem;
-  justify-content: space-between;
-  flex-shrink: 0;
-}
-
-.sidebar-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.sidebar-logo {
-  width: 32px;
-  height: 32px;
-  background: var(--primary);
-  color: #FFF;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.sidebar-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  list-style: none;
-}
-
-.sidebar-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.6rem 0.8rem;
-  border-radius: var(--radius-sm);
-  color: var(--text-main);
-  font-size: 0.92rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.sidebar-item:hover {
-  background: #EAEAEA;
-}
-
-.sidebar-item.active {
-  background: #EAEAEA;
-  color: var(--primary);
-  font-weight: 600;
-}
-
-.main-content {
-  flex: 1;
-  height: 100vh;
-  overflow-y: auto;
-  padding: 2.5rem 4rem;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* HEADER DE PAGINA */
-.page-title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.25rem;
-}
-
-.page-subtitle {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  margin-bottom: 2rem;
-}
-
-/* LISTA DE TAREAS ESTILO TODOIST */
-.todoist-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.task-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.85rem 0.75rem;
-  border-bottom: 1px solid var(--border-light);
-  transition: background 0.15s ease;
-  border-radius: var(--radius-sm);
-}
-
-.task-row:hover {
-  background: #F4F4F4;
-}
-
-.task-left {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-
-.task-checkbox {
-  width: 18px;
-  height: 18px;
-  border: 2px solid #888;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.task-checkbox:hover {
-  border-color: var(--primary);
-  background: rgba(228, 66, 50, 0.1);
-}
-
-.task-checkbox.completed {
-  background: #888;
-  border-color: #888;
-}
-
-.task-title {
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-.task-title.completed {
-  text-decoration: line-through;
-  color: var(--text-muted);
-}
-
-.task-meta {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.task-badge {
-  padding: 0.15rem 0.5rem;
-  border-radius: 4px;
-  background: #EFEFEF;
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-/* BOTONES MINIMALISTAS */
-.btn-todoist {
-  background: var(--primary);
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
-
-.btn-todoist:hover {
-  background: var(--primary-hover);
-}
-
-.btn-ghost {
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  padding: 0.5rem 0.8rem;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.btn-ghost:hover {
-  background: #EAEAEA;
-  color: var(--text-main);
-}
-
-/* MODAL Y FORMULARIOS */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.3);
-  backdrop-filter: blur(2px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.modal-card {
-  background: var(--bg-card);
-  padding: 2rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-dropdown);
   width: 100%;
-  max-width: 440px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  margin-bottom: 1.2rem;
-}
+/* 2. REGLAS PARA PANTALLAS DE CELULARES (Menos de 768px) */
+@media (max-width: 768px) {
+  
+  /* Ajusta imágenes y videos para que nunca se salgan de la pantalla */
+  img, svg, video {
+    max-width: 100% !important;
+    height: auto !important;
+  }
 
-.form-group label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-main);
-}
+  /* Ajusta contenedores y bloques principales */
+  div, main, section, header, footer, article, nav {
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
 
-.form-group input, .form-group select {
-  padding: 0.65rem 0.8rem;
-  border: 1px solid var(--border-active);
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
-  outline: none;
-}
+  /* Convierte filas horizontales (flex/grid) en columnas verticales */
+  .flex, [class*="flex"], [class*="grid"] {
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+  }
 
-.form-group input:focus {
-  border-color: var(--primary);
-}
-/* Rejilla principal del calendario */
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-  width: 100%;
-}
+  /* Ajuste de tipografía para pantallas pequeñas */
+  h1 {
+    font-size: 1.75rem !important;
+  }
 
-/* Encabezados de días (Lun, Mar, etc.) */
-.day-header {
-  text-align: center;
-  font-weight: 700;
-  color: #64748b;
-  padding: 10px 0;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-}
+  h2 {
+    font-size: 1.4rem !important;
+  }
 
-/* Tarjetas de cada día */
-.calendar-day {
-  background: #ffffff;
-  border-radius: 12px;
-  min-height: 90px;
-  padding: 10px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-  transition: all 0.2s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.calendar-day:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-}
-
-.calendar-day.empty {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-}
-
-/* Día actual (Hoy) */
-.calendar-day.today {
-  border: 2px solid #3b82f6;
-  background-color: #eff6ff;
-}
-
-.calendar-day.today .day-number {
-  background-color: #3b82f6;
-  color: #ffffff;
-  padding: 2px 8px;
-  border-radius: 20px;
-  font-weight: bold;
-}
-
-.day-number {
-  font-weight: 600;
-  color: #1e293b;
-  font-size: 0.95rem;
-}
-
-/* Botones de navegación */
-.btn-nav, .btn-today {
-  background: #f1f5f9;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  padding: 6px 12px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.2s;
-}
-
-.btn-nav:hover, .btn-today:hover {
-  background: #e2e8f0;
+  p, input, button {
+    font-size: 1rem !important;
+  }
 }
