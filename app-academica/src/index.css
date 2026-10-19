@@ -285,3 +285,81 @@ body {
 .form-group input:focus {
   border-color: var(--primary);
 }
+/* Rejilla principal del calendario */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+/* Encabezados de días (Lun, Mar, etc.) */
+.day-header {
+  text-align: center;
+  font-weight: 700;
+  color: #64748b;
+  padding: 10px 0;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+/* Tarjetas de cada día */
+.calendar-day {
+  background: #ffffff;
+  border-radius: 12px;
+  min-height: 90px;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.calendar-day:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.calendar-day.empty {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Día actual (Hoy) */
+.calendar-day.today {
+  border: 2px solid #3b82f6;
+  background-color: #eff6ff;
+}
+
+.calendar-day.today .day-number {
+  background-color: #3b82f6;
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.day-number {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.95rem;
+}
+
+/* Botones de navegación */
+.btn-nav, .btn-today {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-nav:hover, .btn-today:hover {
+  background: #e2e8f0;
+}
