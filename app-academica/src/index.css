@@ -57,3 +57,45 @@ html, body {
     font-size: 1rem !important;
   }
 }
+/* ==========================================
+   ESTILOS GENERALES Y DISPOSICIÓN DEL PANEL
+   ========================================== */
+
+/* Contenedor general: pone el Sidebar a la izquierda y el contenido a la derecha */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f8fafc;
+  box-sizing: border-box;
+}
+
+/* Área de contenido principal */
+.main-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+/* Envoltorio para centrar y estilizar la pantalla de Login */
+.login-screen-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* Adaptación para pantallas de celular */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column; /* En celular se acomoda verticalmente */
+  }
+  
+  .main-content {
+    padding: 12px;
+  }
+}
